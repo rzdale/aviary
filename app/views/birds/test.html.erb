@@ -1,4 +1,4 @@
-<button id="nb-test-button">Run new-bird test</button>
+<button id="new-test-button">Run new-bird test</button>
 <br>
 <button id="del-test-button">Run delete-bird test</button>
 <br>
@@ -22,7 +22,7 @@
         genus: "Party monster"
     }
 
-    $('#nb-test-button').on('click', function(){
+    $('#new-test-button').on('click', function(){
         $.ajax({
             url: '/birds',
             method: 'POST',
@@ -33,7 +33,7 @@
     
     $('#del-test-button').on('click', function(){
         $.ajax({
-            url: '/birds/22',
+            url: '/birds/7',
             method: 'DELETE'
             });
     });
@@ -41,7 +41,7 @@
     
     $('#upd-test-button').on('click', function(){
         $.ajax({
-            url: '/birds/23',
+            url: '/birds/5',
             method: 'PUT',
             data: revisedPayload
             });

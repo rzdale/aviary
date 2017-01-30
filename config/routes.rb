@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   put '/birds/:id' => 'birds#update'
 
-  delete '/birds/:id' => 'birds#delete'
+  delete '/birds/:id' => 'birds#destroy'
   
   get '/test' => 'birds#test'
 

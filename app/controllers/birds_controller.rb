@@ -1,21 +1,19 @@
 class BirdsController < ApplicationController
+  
+  
+  before_action :set_bird, only: [:show, :update, :destroy]
+  
+  
   def index
     render json: Bird.all
   end
 
   def show
-    render json: Bird.find(params[:id])
+    render json: @bird
   end
 
   def create
-    puts "got into the method!!!!!!!!!!!!!!!!!!!!!!"
-    newbird = Bird.new(
-                name: params[:name],
-                conservation_status: params[:conservation_status],
-                order: params[:order],
-                family: params[:family],
-                genus: params[:genus]
-              )
+    newbird = Bird.new(bird_params)
 
     if newbird.save
       render json: newbird
@@ -25,30 +23,33 @@ class BirdsController < ApplicationController
   end
 
   def update
-    bird = Bird.find(params[:id])
-    
-    bird.update(
-                name: params[:name],
-                conservation_status: params[:conservation_status],
-                order: params[:order],
-                family: params[:family],
-                genus: params[:genus]
-              )
+    @bird.update(bird_params)
   
-    if bird.save
-      render json: bird
+    if @bird.save
+      render json: @bird
     else
-      render json: bird.errors
+      render json: @bird.errors
     end
   end
   
-  def delete
-    bird = Bird.find(params[:id])
+  def destroy
+    @bird.destroy
     
-    bird.destroy
+    head :no_content
   end
 
   def test
+  end
+  
+  
+  private
+  
+  def set_bird
+    @bird = Bird.find(params[:id])
+  end
+  
+  def bird_params
+    params.permit(:name, :conservation_status, :order, :family, :genus)
   end
 
 end
