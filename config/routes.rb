@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/birds/:id' => 'birds#show'
 
   post 'birds' => 'birds#create'
+  
+  post 'birds/:id/update' => 'birds#update'
 
+  post 'birds/:id/delete' => 'birds#delete'
 
 end

@@ -23,4 +23,29 @@ class BirdsController < ApplicationController
     end
   end
 
+  def update
+    bird = Bird.find(params[:id])
+    
+    bird.update(
+                name: params[:name],
+                conservation_status: params[:conservation_status],
+                order: params[:order],
+                family: params[:family],
+                genus: params[:genus]
+              )
+  
+    if bird.save
+      render json: bird
+    else
+      render json: bird.errors
+    end
+  end
+  
+  def delete
+    bird = Bird.find(params[:id])
+    
+    bird.destroy
+  end
+
+
 end
