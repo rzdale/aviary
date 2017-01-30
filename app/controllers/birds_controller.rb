@@ -8,6 +8,7 @@ class BirdsController < ApplicationController
   end
 
   def create
+    puts "got into the method!!!!!!!!!!!!!!!!!!!!!!"
     newbird = Bird.new(
                 name: params[:name],
                 conservation_status: params[:conservation_status],
@@ -47,5 +48,7 @@ class BirdsController < ApplicationController
     bird.destroy
   end
 
+  def test
+  end
 
 end

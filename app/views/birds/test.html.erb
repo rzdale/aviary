@@ -1,0 +1,50 @@
+<button id="nb-test-button">Run new-bird test</button>
+<br>
+<button id="del-test-button">Run delete-bird test</button>
+<br>
+<button id="upd-test-button">Run update-bird test</button>
+
+
+<script>
+    var payload = {
+        name: "BigByrd",
+        conservation_status: "SS",
+        order: "Friendlyforms",
+        family: "Yellowbirds",
+        genus: "monster"
+    }
+    
+    var revisedPayload = {
+        name: "LilByrd",
+        conservation_status: "HE",
+        order: "Jerkyforms",
+        family: "Redbirds",
+        genus: "Party monster"
+    }
+
+    $('#nb-test-button').on('click', function(){
+        $.ajax({
+            url: '/birds',
+            method: 'POST',
+            data: payload
+            });
+    });
+    
+    
+    $('#del-test-button').on('click', function(){
+        $.ajax({
+            url: '/birds/22',
+            method: 'DELETE'
+            });
+    });
+    
+    
+    $('#upd-test-button').on('click', function(){
+        $.ajax({
+            url: '/birds/23',
+            method: 'PUT',
+            data: revisedPayload
+            });
+    });
+    
+</script>

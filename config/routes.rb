@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 
   get '/birds/:id' => 'birds#show'
 
-  post 'birds' => 'birds#create'
+  post '/birds' => 'birds#create'
   
-  post 'birds/:id/update' => 'birds#update'
+  put '/birds/:id' => 'birds#update'
 
-  post 'birds/:id/delete' => 'birds#delete'
+  delete '/birds/:id' => 'birds#delete'
+  
+  get '/test' => 'birds#test'
 
 end
